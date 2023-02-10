@@ -1,0 +1,29 @@
+﻿@using Umbraco.Cms.Core.Models.Blocks;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+
+
+@{
+    var grid = Model.Value<BlockGridModel>("Grid");
+
+    if (grid != null)
+    {
+        foreach (var component in grid)
+        {
+            var content = component.Content;
+
+            switch (content.ContentType.Alias)
+            {
+                case CTA.ModelTypeAlias:
+                    @await Component.InvokeAsync("CTA", component)
+                    break;
+                default:
+                    @await Html.PartialAsync("~/Views/Partials/blockgrid/Components/" + content.ContentType.Alias + ".cshtml", component)
+                    break;
+            }
+
+
+        }
+    }
+}
+
+

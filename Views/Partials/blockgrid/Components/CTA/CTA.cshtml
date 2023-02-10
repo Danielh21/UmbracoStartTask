@@ -1,0 +1,20 @@
+﻿@*@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockGridItem<ContentModels.CTA>>;*@
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.CTA>
+@using  ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+
+@*<h1>@Model.Link</h1>*@
+
+
+<div id="delayed-component"><Loading /></div>
+
+@code {
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await Task.Delay(4000);
+            await InvokeAsync(nameof(ViewComponent));
+        }
+    }
+} 
+<Loading /> component:

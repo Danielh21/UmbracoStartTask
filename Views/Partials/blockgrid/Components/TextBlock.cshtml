@@ -1,0 +1,7 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockGridItem<ContentModels.TextBlock>>;
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+
+
+<h1>@Model.Content.Body</h1>
+
+<img src="@Model.Content.Image?.Url()" />

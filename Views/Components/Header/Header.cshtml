@@ -1,0 +1,30 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Internal.Umbraco.Views.Components.Header.HeaderModel>
+@{
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>
+            @Model.Title
+        </title>
+        <meta name="description" content="@Model.MetaDescription>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta property="og:url" content="@Model.URLOpenGraph" />
+        <meta property="og:image" content=@Model.ImageOpenGraph />
+        <meta property="og:title" content="@Model.TitleOpenGraph />
+        <meta property="og:type" content=@Model.TypeOpenGraph />
+        <link rel="stylesheet" href="@Url.Content("~/css/blockgridlayout.css")">
+    </head>
+
+    <div>
+        <h2>This is a header</h2>
+
+        <ul>
+            <li> <a href="@Model.Root.Url()">@Model.Root.Name</a></li>
+            @foreach(var p in Model.ChildPages)
+            {
+                <li> <a href="@p.Url()">@p.Name </a> </li>
+            }
+        </ul>
+
+    </div>
+}

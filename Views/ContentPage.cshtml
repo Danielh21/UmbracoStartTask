@@ -1,0 +1,21 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.ContentPage>
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@{
+    Layout = "~/Views/Layout/_Layout.cshtml";
+}
+@{
+    var backgroundImg = Model.BackgroundImage != null ? Model.BackgroundImage.Url() : "";
+}
+
+    <div style="background-image: @backgroundImg">
+        <a href="@Model.HeroLink?.Url">
+            <h1>
+            @Model.HeroTitle
+            </h1>
+            <p>@Model.Lead</p>
+        </a>
+    </div>
+
+
+@await Html.GetBlockGridHtmlAsync(Model.Grid)
